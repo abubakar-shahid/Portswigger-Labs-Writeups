@@ -1,0 +1,25 @@
+-> After openeing the targer website, i tried to login with an incorrect username around 12 times with different incorrect passwords but the account or ip didnt get blocked.
+-> this shows that the login will not get blocked on any random incorrect username rather it will get locked if i try to attempt incorrect passwords with a correct username.
+-> this is logical because they will block a username that they know exists and can login, and with too many login tries, someone else is trying to login with his account
+-> i also brute forced username with the given list of the usernames and got a username against which it took too long to respond as compared to others
+-> i brute forced passwords with this username but did not get any correct password that shows that the chosen username was also not a valid one
+-> now i remember that i studied different types of attacks used by intruder in burpsuite. the type that we typically use is 'Sniper' through which we can brute force a single payload
+-> we had also used pitchfork to conduct attack with more than one payloads at a time but it takes the payload values in a parallel manner
+-> another attack 'cluster bomb' is used that uses all the possible combinations of the given values of the payloads
+-> after reviewing the pattern for this attack type, i used this attack for username and password that conducted an attack for 10100 combinations for 101 usernames and 100 passwords
+-> but i did not let the attack complete because it seemed to be too much ineffecient. so i studied a little solution of the lab
+-> from the solution i got a little hint to conduct proper attack according to the present condition
+-> it suggessted to add null payloads in place of passwords rather than adding the complete list of the passwords, and add a value of 5 payloads for each username
+-> this made 505 different combinations in which each username will try to login 5 times with an empty password
+-> the purpose of this was to check that against which username it says too many login attempts and blocks the account
+-> when the attack finished, i did not observe any change in the responses of any of the username. some usernames took a bit long in of their equests, but in short, the mission did not accomplish
+-> i read complete instructions of the solution of the guide but none happened according to that. there was no response containing the error message as they told that should be
+-> so understanding the scenario, i prepared another logic. i decided to make a file of usernames with every username being repeated 5 times
+-> i used this file for the brute force attack with a too long password so that if there is a valid username exists, all the five requests of it will take long
+-> even if it does not give the required error message, the username will be highlighted by its response time
+-> this attack was now successful. although the results were not as i thought, i.e. i got the username differentiated by the response error message. rather than the response time. the response time was normal like all the other requests
+-> using this username, i conducted a brute force on the password using the given file for the passwords
+-> the column of the error messages contained different messages. in start, it gave invalid username and password error, then after 3 failed attempts it gave the error to try again after 1 minute
+-> but in the same attack when the correct password appeared, there was no error message indicating that it has logged in using that password
+
+Result: the flaw was that the error message changed for the valid username only that indicated the correct username
