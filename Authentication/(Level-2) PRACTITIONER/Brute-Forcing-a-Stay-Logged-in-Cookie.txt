@@ -1,4 +1,4 @@
-# Insecure Stay-Logged-In Cookie — Cookie Construction & Brute-force
+# Brute-forcing a stay-logged-in cookie
 
 ## Challenge Information
 
